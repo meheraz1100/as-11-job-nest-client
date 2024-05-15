@@ -79,9 +79,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl">
-            <img src="" alt="" />
-          </Link>
+          <button className="btn btn-ghost text-3xl">Job Nest</button>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-base">{navItems}</ul>
