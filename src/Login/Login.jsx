@@ -1,11 +1,14 @@
 
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
+import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
 
-  const {signIn} = useContext(AuthContext);
+  const {signIn, googleLogin} = useContext(AuthContext);
+  const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -20,8 +23,20 @@ const Login = () => {
         signIn(email, password)
         .then(result => {
           console.log(result.user);
+          e.target.reset();
+          toast.success('Login Success!!!!!!')
+          navigate('/')
         })
         .catch(error => console.log(error))
+    }
+
+    const handleGoogleLogin = () => {
+      googleLogin()
+      .then(result => {
+        console.log(result?.user)
+        toast.success('Login Success!!!!!!')
+        navigate('/')
+      })
     }
 
 
@@ -31,7 +46,7 @@ const Login = () => {
 
     return (
         <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-[#407db4] rounded-lg">
         <div className="hero-content flex-col lg:flex-row">
           <div className="w-1/2 mr-12">
             <img className="rounded-full" src='https://i.ibb.co/3my4B6T/1000-F-132438747-v-Qyl1wid-U6cv-Ps-AWl-B2-Ypm-FCck9-N4h-Wq.jpg' alt="" />
@@ -72,7 +87,17 @@ const Login = () => {
                 <input className="btn btn-primary" type="submit" value="Login" />
               </div>
             </form>
-            <p className="text-center pb-4">New to Car Doctors? <Link to="/register" className="font-bold text-orange-500"> Sign Up</Link></p>
+            <p className="text-center pb-4">New to Job Nest? <Link to="/register" className="font-bold text-orange-500"> Sign Up</Link></p>
+            <div className="flex justify-center">
+              <button
+                className="btn btn-ghost text-4xl tooltip"
+                data-tip="Login With Google"
+                onClick={handleGoogleLogin}
+              >
+                <FcGoogle></FcGoogle>
+                
+              </button>
+            </div>
           </div>
         </div>
       </div>

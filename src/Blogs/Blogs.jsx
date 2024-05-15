@@ -1,105 +1,51 @@
 const Blogs = () => {
   return (
-    <div className="grid gap-10">
-      <div className="collapse bg-[#407db4]">
+    <div className="grid gap-10 text-white">
+      <div className="collapse bg-[#407db4]" >
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
-        Tailor Your Resume to the Job
+        What is an access token and refresh token? How do they work and where should we store them on the client side?
         </div>
         <div className="collapse-content text-xl">
-          <p>Customize your resume for each job application by highlighting relevant skills, experiences, and achievements that align with the job description.</p>
+          <h1 className="text-3xl font-bold">Access Token:</h1>
+          <li>Think of it as a keycard granting temporary access to a specific resource.</li>
+          <li>It contains limited information about the user and has a short lifespan (usually minutes to hours).</li>
+          <li>This short validity helps improve security by minimizing the window for potential misuse if intercepted.</li>
+          <li>The access token is used by the client application (like a mobile app) to make authorized requests to the API and access data.</li>
+          <br />
+          <h1 className="text-3xl font-bold">Refresh Token:</h1>
+          <li>Acts like a renewal card for your access token.</li>
+          <li>It is a longer-lived credential (often days or weeks) compared to the access token.</li>
+          <li>When the access token expires, the client application can use the refresh token to request a new access token from the authorization server without needing the user to log in again.</li>
+          <li>This creates a smooth user experience by avoiding frequent login prompts.</li>
         </div>
       </div>
 
       <div className="collapse bg-[#407db4]">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
-        Use a Professional Format
+        What is express js? What is Nest JS?
         </div>
         <div className="collapse-content text-xl">
-          <p>Choose a clean, easy-to-read format with clear headings and bullet points to make your resume visually appealing and easy to navigate.</p>
+        <h1 className="text-3xl font-bold">Express JS:</h1>
+          <li><span className="text-2xl font-bold">Lightweight web framework for Node.js:</span>
+          <p>Express offers a flexible foundation for building web applications and APIs. It provides essential tools like routing, middleware, and templating, without enforcing a rigid structure.</p>
+          </li>
+          <li><span className="text-2xl font-bold">Unopinionated approach:</span>
+          <p>Developers have a high degree of control over how they write code, allowing for customization and experimentation. This can be beneficial for smaller projects or those with specific requirements.</p>
+          </li>
+          <li><span className="text-2xl font-bold">Vast community and ecosystem:</span>
+          <p>Express boasts a large and active community, making it easy to find resources, libraries, and support. This extensive ecosystem helps expedite development and provides solutions for common challenges.</p>
+          </li>
+          <div><span className="text-2xl font-bold">Suitable for:</span>
+          <li>Simple web applications and APIs</li>
+          <li>Prototyping and experimentation</li>
+          <li>Projects where flexibility is paramount</li>
+          </div>
         </div>
       </div>
 
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Include a Strong Summary or Objective
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Start your resume with a brief summary or objective statement that highlights your career goals and what you can bring to the table.</p>
-        </div>
-      </div>
 
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Highlight Your Achievements
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Instead of simply listing your job responsibilities, focus on quantifiable achievements and outcomes that demonstrate your skills and contributions.</p>
-        </div>
-      </div>
-
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Use Action Verbs
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Start each bullet point with a strong action verb to convey your accomplishments more effectively and make your resume more dynamic.</p>
-        </div>
-      </div>
-
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Quantify Your Accomplishments
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Whenever possible, quantify your achievements with numbers, percentages, or dollar amounts to provide concrete evidence of your success.</p>
-        </div>
-      </div>
-
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Emphasize Relevant Skills
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Highlight skills that are directly relevant to the job you are applying for, including technical skills, soft skills, and industry-specific knowledge.</p>
-        </div>
-      </div>
-
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Include Keywords
-        </div>
-        <div className="collapse-content text-xl">
-          <p> Incorporate keywords from the job description into your resume to ensure it gets past applicant tracking systems (ATS) and catches the attention of hiring managers.</p>
-        </div>
-      </div>
-
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Proofread Carefully
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Thoroughly proofread your resume to catch any typos, grammatical errors, or formatting issues that could undermine your professionalism.</p>
-        </div>
-      </div>
-
-      <div className="collapse bg-[#407db4]">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-        Keep it Concise
-        </div>
-        <div className="collapse-content text-xl">
-          <p>Aim for a resume length of one to two pages, focusing on the most relevant and impactful information. Trim unnecessary details and streamline your content for maximum impact.</p>
-        </div>
-      </div>
     </div>
   );
 };

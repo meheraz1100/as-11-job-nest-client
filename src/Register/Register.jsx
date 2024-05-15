@@ -1,32 +1,52 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
+import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
+  const { createUser, googleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const handleRegister = (e) => {
+    e.preventDefault();
 
-    const { createUser } = useContext(AuthContext);
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
+    console.log(name, email, password);
 
-    const handleRegister = (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        console.log(name, email, password);
-        
-        createUser(email, password)
-        .then((result) => {
+    createUser(email, password)
+      .then((result) => {
         console.log(result.user);
-    })
-    .catch(error => console.log(error))
+        navigate('/login')
+        toast('Please Sign In First')
+      })
+      .catch((error) => console.log(error));
+  };
 
+  // const handleGoogleLogin = () => {
+  //   googleLogin()
+  //   .then(result => {
+  //     console.log(result.user)
+  //     navigate('/')
+  //     toast.success('User login with Google successfully')
+  //   });
+  // };
+
+  const handleGoogleLogin = async () => {
+    try{
+      const result = await googleLogin()
+      const user = result.user;
+      console.log(user);
+      navigate('/')
     }
-
-
+    catch(error){
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -34,7 +54,11 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
             <div className="w-1/2 mr-12">
-              <img className="rounded-lg" src='https://i.ibb.co/mBcLcqq/1000-F-119953739-n-FB9-KAQlz-M0lvq-Nhe-Dif-WHt-SN3bjh8a-K.jpg' alt="" />
+              <img
+                className="rounded-lg"
+                src="https://i.ibb.co/mBcLcqq/1000-F-119953739-n-FB9-KAQlz-M0lvq-Nhe-Dif-WHt-SN3bjh8a-K.jpg"
+                alt=""
+              />
             </div>
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
               <form className="card-body" onSubmit={handleRegister}>
@@ -88,10 +112,19 @@ const Register = () => {
                   />
                 </div>
               </form>
+              <div className="flex justify-center">
+                <button
+                  className="btn btn-ghost text-4xl tooltip"
+                  data-tip="Login With Google"
+                  onClick={handleGoogleLogin}
+                >
+                  <FcGoogle></FcGoogle>
+                  
+                </button>
+              </div>
               <p className="text-center pb-4">
                 Already have an account?{" "}
                 <Link to="/login" className="font-bold text-orange-500">
-                  {" "}
                   Sign in
                 </Link>
               </p>
